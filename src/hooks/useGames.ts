@@ -27,6 +27,7 @@ const useGames = () => {
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
+    
     const controller = new AbortController();
     
     setLoading(true);
@@ -39,8 +40,10 @@ const useGames = () => {
       
       .catch((err) => {
         if (err instanceof CanceledError) return;
-        setError(err.message)});
-        setLoading(false);
+        setError(err.message)
+        setLoading(false)}
+        );
+        
       
       return () => controller.abort();
   }, []);
